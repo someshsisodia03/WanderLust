@@ -1,0 +1,30 @@
+<% layout('boilerplate') -%>
+<body>
+    <%if(msg && msg.length){%>
+        <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+            <%=msg%>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>    
+    <%}%>
+    <h3 class="text-center">Login For <a class="navbar-brand" href="/listing"><i class="fa-regular fa-compass"></i> WanderLust</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button></h3>
+    <div class="forms">
+        <form class="row g-3 col-6 " method="POST" action="/listing/login" >
+            <div class="col-md-12">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="username" name="username" required>
+            </div>
+            <div class="col-md-12">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+            </div>
+            <br><br><br><br>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" style="background-color: green; color: aliceblue; border: none;">Submit</button>
+            </div>
+        </form>
+    </div>
+    <br><br><br><br><br>
+</body>

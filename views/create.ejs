@@ -1,0 +1,41 @@
+<% layout('boilerplate') -%>
+<body>
+    <h3 class="text-center">Create a New Listing</h3>
+    <div class="forms">
+        <form class="row g-3 col-6 needs-validation" method="POST" action="/addDetail" novalidate>
+            <div class="col-md-12">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Add a catchy title" name="title" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-12">
+                <label for="desc" class="form-label">Description</label>
+                <input type="text" class="form-control" id="desc"  name="description" required>
+                <div class="invalid-feedback">Fill in the description</div>
+            </div>
+            <div class="col-12">
+                <label for="url" class="form-label">URL</label>
+                <input type="text" class="form-control" id="url" placeholder="Enter image url/link" name="url">
+            </div>
+            <div class="col-md-6">
+                <label for="price" class="form-label">Price (in rupees)</label>
+                <input type="text" class="form-control" id="price" placeholder="1200" name="price" required>
+                <div class="invalid-feedback">Enter the valid price</div>
+            </div>
+            <div class="col-md-6">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" class="form-control" id="country" name="country" placeholder="India" required>
+                <div class="invalid-feedback">Enter the valid country name</div>
+            </div>
+            <div class="col-md-12">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="Alwar,Rajasthan" required>
+                <div class="invalid-feedback">Enter the valid loaction</div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" style="background-color: brown; color: aliceblue; border: none;">Add</button>
+            </div>
+        </form>
+    </div>
+    <br>
+</body>

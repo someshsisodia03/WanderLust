@@ -1,0 +1,82 @@
+<% layout('boilerplate') -%>
+<body>
+    <%if(review && review.length){%>
+        <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+            <%=review%>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>    
+    <%}%>
+    <%if(reviewe && reviewe.length){%>
+        <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+            <%=reviewe%>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>    
+    <%}%>
+    <%if(err && err.length){%>
+        <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+            <%=err%>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>    
+    <%}%>
+    <h5 class="card-title text-center mb-3"><b style="font-size: larger;"><%=details.title%></b></h5>
+    <div style="display: flex;justify-content: center;">
+    <div class="card" style="width: 35rem; border: none;">
+        <img src="<%=details.image.url%>" class="card-img-top" alt="listing_image" style="height: 30%;">
+        <div class="card-body p-3" >
+            <p class="card-text"><b>PostedBy: </b><i><%=details.owner.username%></i></p>
+            <p class="card-text"><b>Description:</b> <%=details.description%></p>
+            <p class="card-text"><b>Price: </b><%=details.price%></p>
+            <p class="card-text"><b>Location: </b><%=details.location%></p>
+            <p class="card-text"><b>Country: </b><%=details.country%></p>
+                <a href="/listing/edit/<%=details.id%>" class="btn btn-primary">Want to Update it</a>
+                <br><br>
+                <form method="post" action="/deleteDetail/<%=details.id%>?_method=DELETE"><button style="border-radius: 0.5rem;height: 2.3rem;border: none; background-color: rgba(86, 86, 220, 0.95);color: white;">Delete this post</button></form>
+            <hr>
+            <h5 class="text-center m-3"><b style="font-size: larger;">Leave a review</b></h5>
+            <div class="forms">
+            <form class="row g-3 col-md-12 needs-validation" method="post" action="/listing/<%=details.id%>/review" novalidate>
+                <div class="form-group">
+                <label class="mb-3" for="comment" style="font-size:larger;font-weight: 400;">Write a comment:</label>
+                <textarea class="form-control" name="comment" id="comment" placeholder="Share your experience!" rows="5" required></textarea>
+                <div class='invalid-feedback'>Please give us a review.</div>
+                </div>
+                <div class="form-group row">
+                    <label for="rating" class="col-sm-2 col-form-label mt-3" style="font-size:larger;font-weight: 400;">Rating: </label>
+                    <div class="col-sm-5  mt-3">
+                        <select class="form-control" id="rating" name="rating" required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option selected>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class='invalid-feedback'>Please give Rating.</div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary col-3">Submit</button>
+            </form>
+        </div>
+        <hr>
+        <h5 class="card-title text-center mb-3"><b style="font-size: larger;">Reviews Listed Below</b></h5>
+        <div class="row mb-3">
+        <%for(x of details.reviews){%>
+        <div class="col-sm-6 mb-3">
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">PostedBy: <%=x.author.username%></h5>
+                <p class="card-text">Comment: <i><%=x.comment%></i></p>
+                <p class="card-text">Rating (out of 5): <%=x.rating%></p>
+                <p class="card-text">Time: <%=x.CreatedAt%></p>
+                <%if(curruser._id.equals(x.author._id)){%>
+                <form method="post" action="/delete/<%=details.id%>/review/<%=x.id%>" ><button class="review-delete" >Delete</button></form>
+                <%}%>
+            </div>
+            </div>
+        </div>
+        <%}%>
+        </div>
+    </div> 
+    </div>
+</div>
+</body>
