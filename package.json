@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "day40.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node day40.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "somesh",
   "license": "ISC",
