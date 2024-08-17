@@ -59,25 +59,59 @@
                 </div>
             </form>
         </div>
-        <hr>
-        <h5 class="card-title text-center mb-3"><b style="font-size: larger;">Reviews Listed Below</b></h5>
-        <div class="row mb-3">
-        <%for(x of details.reviews){%>
-        <div class="col-sm-6 mb-3">
-            <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">PostedBy: <%=x.author.username%></h5>
-                <p class="starability-result card-text" data-rating="<%=x.rating%>" ></p>
-                <p class="card-text">Comment: <i><%=x.comment%></i></p>
-                <p class="card-text">Time: <%=x.CreatedAt%></p>
-                <%if(curruser._id.equals(x.author._id)){%>
-                <form method="post" action="/delete/<%=details.id%>/review/<%=x.id%>" ><button class="review-delete" >Delete</button></form>
-                <%}%>
+        <%if(details.reviews.length>0){%>
+            <hr>
+            <h5 class="card-title text-center mb-3"><b style="font-size: larger;">Reviews Listed Below</b></h5>
+            <div class="row mb-3">
+            <%for(x of details.reviews){%>
+            <div class="col-sm-6 mb-3">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">PostedBy: <%=x.author.username%></h5>
+                    <p class="starability-result card-text" data-rating="<%=x.rating%>" ></p>
+                    <p class="card-text">Comment: <i><%=x.comment%></i></p>
+                    <p class="card-text">Time: <%=x.CreatedAt%></p>
+                    <%if(curruser._id.equals(x.author._id)){%>
+                    <form method="post" action="/delete/<%=details.id%>/review/<%=x.id%>" ><button class="review-delete" >Delete</button></form>
+                    <%}%>
+                </div>
+                </div>
             </div>
+            <%}%>
             </div>
-        </div>
+
         <%}%>
-        </div>
+        <hr>
+        <div id="map" style="height: 500px;width: 100%;"></div>
+        <!-- Map-Section -->
+         
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+        <script>
+            window.onload = function() {
+                function getLatLon(locationName, countryName, callback) {
+                    var geocoder = L.Control.Geocoder.nominatim();        
+                    var query = `${locationName}, ${countryName}`;        
+                    geocoder.geocode(query, function(results) {
+                        var latlng = results[0].center;
+                        callback(latlng.lat, latlng.lng);                
+                    });
+                }            
+                getLatLon('<%=details.location%>', '<%=details.country%>', function(lat, lon) {
+                    if (lat && lon) {
+                        var map = L.map('map').setView([lat, lon], 13);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(map);
+                        
+                        L.marker([lat, lon]).addTo(map)
+                            .bindPopup('You will be here!')
+                            .openPopup();
+                    }
+                });
+            };
+            </script> 
+            
     </div> 
     </div>
 </div>
