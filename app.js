@@ -1,3 +1,6 @@
+if(process.env.NODE_ENV!="production"){
+    require('dotenv').config();
+}
 const express = require("express");
 const app = express();
 var cookieParser = require('cookie-parser')
@@ -49,6 +52,10 @@ app.use((req,res,next)=>{
     res.locals.curruser = req.user;
     next();
 })
+// app.use((req,res,next)=>{
+//     res.locals.fileName = req.file;
+//     next();
+// })
 app.use("/",listing);
 app.use("/",reviewe);
 app.use("/",signLogin);

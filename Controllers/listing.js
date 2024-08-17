@@ -12,13 +12,13 @@ module.exports.createlisting =(req,res)=>{
     res.render("create.ejs");
 }
 module.exports.edit = async(req,res)=>{   
-    let {title,description,url,price,country,location} = req.body;
+    let {title,description,price,country,location} = req.body;
     const newplace = new lstData({
         title:title,
         description:description,
         image:{
-            filename:"listingimage",
-            url:url
+            filename:req.file.filename,
+            url:req.file.path
         },
         price:price,
         location:location,
@@ -33,6 +33,7 @@ module.exports.showedit = async(req,res)=>{
     let id = req.params.id;
     const oldDetails = await lstData.findById(id).populate({path:"owner"});
     if(oldDetails.owner._id.equals(req.user._id)){
+        res.locals.fileerr = req.flash("fileName");
         res.render("makechange.ejs",{d:oldDetails});        
     }
     else{
@@ -41,26 +42,31 @@ module.exports.showedit = async(req,res)=>{
     }
     }
     module.exports.update = async (req, res) => {
-        let { title, description, url, price, country, location } = req.body;
+        let { title, description, price, country, location } = req.body;
         const updateFields = {
             title: title,
             description: description,
-            image: {
-                filename: "listingimage",
-                url: url
-            },
             price: price,
             location: location,
             country: country
         };
-            
+        
+        if(req.file){
+            updateFields.image = {
+                url: req.file.path,
+                filename: req.file.filename
+            };
+            };
             await lstData.updateOne(
                 { _id: req.params.id },
                 { $set: updateFields }
             );
-            req.flash("update","Listing has been updated!");
+            
+            req.flash("update", "Listing has been updated!");
             res.redirect("/listing");
+
     };
+    
     module.exports.destroy = async (req,res)=>{
         let id = req.params.id;
         let lst = await lstData.findById(id).populate({path:"owner"});

@@ -2,7 +2,7 @@
 <body>
     <h3 class="text-center">Create a New Listing</h3>
     <div class="forms">
-        <form class="row g-3 col-6 needs-validation" method="POST" action="/addDetail" novalidate>
+        <form class="row g-3 col-6 needs-validation" method="POST" action="/addDetail" novalidate enctype="multipart/form-data">
             <div class="col-md-12">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" placeholder="Add a catchy title" name="title" required>
@@ -14,8 +14,9 @@
                 <div class="invalid-feedback">Fill in the description</div>
             </div>
             <div class="col-12">
-                <label for="url" class="form-label">URL</label>
-                <input type="text" class="form-control" id="url" placeholder="Enter image url/link" name="url">
+                <label for="url" class="form-label">Upload Image</label>
+                <input type="file" class="form-control" id="url" name="url" required>
+                
             </div>
             <div class="col-md-6">
                 <label for="price" class="form-label">Price (in rupees)</label>

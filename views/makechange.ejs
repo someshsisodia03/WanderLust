@@ -2,7 +2,7 @@
 <body>
     <h3 class="text-center">Edit your Listing</h3>
     <div class="forms ">
-        <form class="row g-3 col-6 needs-validation" novalidate method="post" action="/editDetail/<%=d.id%>?_method=PATCH">
+        <form class="row g-3 col-6 needs-validation" novalidate method="post" action="/editDetail/<%=d.id%>?_method=PATCH" enctype="multipart/form-data">
             <div class="col-md-12">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" value="<%=d.title%>" >
@@ -14,8 +14,12 @@
                 <div class="invalid-feedback">Fill in the description</div>
             </div>
             <div class="col-12">
-                <label for="url" class="form-label">URL</label>
-                <input type="text" class="form-control" id="url" placeholder="Enter image url/link" name="url" value="<%=d.image.url%>" >
+                <label class="form-label">Original Image</label> <br>
+                <img style="width: 225px; height: 150px;" src = '<%= d.image.url%>'> 
+            </div>
+            <div class="col-12">
+                <label for="url" class="form-label">Upload Image</label>
+                <input type="file" class="form-control" id="url" name="url">
                 <div class="valid-feedback">Looks good!</div>
             </div>
             <div class="col-md-6">

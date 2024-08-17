@@ -1,4 +1,7 @@
 const express = require("express");
+const {storage} = require("../cloudConfig.js");
+const multer  = require('multer')
+const upload = multer({storage})
 const router = express.Router({mergeParams:true});
 const listingSchema = require("../Validations/schemaValidation.js")
 const wrapAsync = require("../wrapAsync");
@@ -8,6 +11,7 @@ const isLogged = require("../middlewares.js");
 const postlogin = require("../postloginmiddleware.js");
 const ExpressError = require("../ExpressError.js");
 const mongoose = require('mongoose');
+
 async function main(){
     await mongoose.connect('mongodb://127.0.0.1:27017/project');
 }
@@ -44,14 +48,14 @@ router.get("/listing",wrapAsync(listingController.showlisting))
 router.get("/addListingDetail",isLogged,wrapAsync(listingController.createlisting))
 
 //Add the form....
-router.post("/addDetail",valid,wrapAsync(listingController.edit))
+router.post("/addDetail",upload.single("url"),listingController.edit)
 
 // Show the form for update the listing...
 
 router.get("/listing/edit/:id",isLogged,postlogin,wrapAsync(listingController.showedit))
 
 // Update the form
-router.patch("/editDetail/:id",valid,wrapAsync(listingController.update));
+router.patch("/editDetail/:id",upload.single("url"),valid,wrapAsync(listingController.update));
 
 // Delete the listing....
 router.delete("/deleteDetail/:id",isLogged,postlogin,wrapAsync(listingController.destroy))

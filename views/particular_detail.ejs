@@ -40,21 +40,23 @@
                 <textarea class="form-control" name="comment" id="comment" placeholder="Share your experience!" rows="5" required></textarea>
                 <div class='invalid-feedback'>Please give us a review.</div>
                 </div>
-                <div class="form-group row">
-                    <label for="rating" class="col-sm-2 col-form-label mt-3" style="font-size:larger;font-weight: 400;">Rating: </label>
-                    <div class="col-sm-5  mt-3">
-                        <select class="form-control" id="rating" name="rating" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option selected>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class='invalid-feedback'>Please give Rating.</div>
+                <fieldset class="starability-slot ">
+                    <legend class = "col-lg-12">Rating:</legend>                    
+                    <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="rating" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="rating" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="rating" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="rating" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="rating" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset> 
+                <div>
+                    <button type="submit" class="btn btn-primary col-3">Submit</button>
                 </div>
-                
-                <button type="submit" class="btn btn-primary col-3">Submit</button>
             </form>
         </div>
         <hr>
@@ -65,8 +67,8 @@
             <div class="card">
             <div class="card-body">
                 <h5 class="card-title">PostedBy: <%=x.author.username%></h5>
+                <p class="starability-result card-text" data-rating="<%=x.rating%>" ></p>
                 <p class="card-text">Comment: <i><%=x.comment%></i></p>
-                <p class="card-text">Rating (out of 5): <%=x.rating%></p>
                 <p class="card-text">Time: <%=x.CreatedAt%></p>
                 <%if(curruser._id.equals(x.author._id)){%>
                 <form method="post" action="/delete/<%=details.id%>/review/<%=x.id%>" ><button class="review-delete" >Delete</button></form>
