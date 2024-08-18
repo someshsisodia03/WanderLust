@@ -1,31 +1,5 @@
 <% layout('boilerplate') -%>
 <body>
-    <%if(msg && msg.length){%>
-        <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-            <%=msg%>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>    
-    <%}%>
-    <%if(msge && msge.length){%>
-        
-        <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-            <%=msge%>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>    
-    <%}%>
-    <%if(del && del.length){%>
-        <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-            <%console.log("Hi");%>
-            <%=del%>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>    
-    <%}%>
-    <%if(err && err.length){%>
-        <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-            <%=err[0]%>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>    
-    <%}%>
     <div class="filters">
         <div class="filter">
             <div class="icon"><a href="/listing/show/Trending"><i class="fa-solid fa-fire"></i></a></div>
@@ -65,7 +39,8 @@
         </div>
     </div>
     <div class="cards">
-        <% for (let x of listdata){%>
+        <% for (let x of listdata){ 
+            if(x.category===catg){ %>
             <a href="moreabout/<%=x.id%>" class="cardLink">
                 <div class="card" style="width: 18rem; border: none;">
                     <img src="<%=x.image.url%>" class="card-img-top" alt="listing_img" style="height: 14rem;">
@@ -77,7 +52,6 @@
                     </div>
                 </div>
             </a>
-        <%}%> 
+        <%}}%> 
     </div>
-    <br>
 </body>

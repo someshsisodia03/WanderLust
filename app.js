@@ -28,7 +28,8 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const user = require('./Models/user.js');
 app.set("view engine","ejs");
-app.listen(8080,()=>{
+const PORT = 3000;
+app.listen(PORT,()=>{
     console.log("I m listening...")
 })
 app.use(session({

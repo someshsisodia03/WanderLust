@@ -10,6 +10,7 @@ module.exports= [
       price: 150000,
       location: "Malibu",
       country: "United States",
+      category:"Trending",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -23,6 +24,7 @@ module.exports= [
       price: 120000,
       location: "New York City",
       country: "United States",
+      category:"Mountains",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -36,6 +38,7 @@ module.exports= [
       price: 100000,
       location: "Aspen",
       country: "United States",
+      category:"Rooms",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -49,6 +52,7 @@ module.exports= [
       price: 250000,
       location: "Florence",
       country: "Italy",
+      category:"Rooms",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -62,6 +66,7 @@ module.exports= [
       price: 80000,
       location: "Portland",
       country: "United States",
+      category:"Rooms",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -75,6 +80,7 @@ module.exports= [
       price: 200000,
       location: "Cancun",
       country: "Mexico",
+      category:"Rooms",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -88,6 +94,7 @@ module.exports= [
       price: 90000,
       location: "Lake Tahoe",
       country: "United States",
+      category:"Mountains",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -101,6 +108,7 @@ module.exports= [
       price: 350000,
       location: "Los Angeles",
       country: "United States",
+      category:"Beaches",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -114,6 +122,7 @@ module.exports= [
       price: 3000000,
       location: "Verbier",
       country: "Switzerland",
+      category:"Beaches",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -127,6 +136,7 @@ module.exports= [
       price: 400000,
       location: "Serengeti National Park",
       country: "Tanzania",
+      category:"Mountains",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -140,6 +150,7 @@ module.exports= [
       price: 180000,
       location: "Amsterdam",
       country: "Netherlands",
+      category:"Camping",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -153,6 +164,7 @@ module.exports= [
       price: 100000,
       location: "Fiji",
       country: "Fiji",
+      category:"Rooms",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -166,6 +178,7 @@ module.exports= [
       price: 120000,
       location: "Cotswolds",
       country: "United Kingdom",
+      category:"Beaches",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -179,6 +192,7 @@ module.exports= [
       price: 220000,
       location: "Boston",
       country: "United States",
+      category:"Iconic Cities",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -192,6 +206,7 @@ module.exports= [
       price: 180000,
       location: "Bali",
       country: "Indonesia",
+      category:"Camping",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -205,6 +220,7 @@ module.exports= [
       price: 150000,
       location: "Banff",
       country: "Canada",
+      category:"Camping",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -218,6 +234,7 @@ module.exports= [
       price: 160000,
       location: "Miami",
       country: "United States",
+      category:"Arctic",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -231,6 +248,7 @@ module.exports= [
       price: 3000000,
       location: "Phuket",
       country: "Thailand",
+      category:"Arctic",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -244,6 +262,7 @@ module.exports= [
       price: 400000,
       location: "Scottish Highlands",
       country: "United Kingdom",
+      category:"Beaches",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -257,6 +276,7 @@ module.exports= [
       price: 500000,
       location: "Dubai",
       country: "United Arab Emirates",
+      category:"Trending",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -270,6 +290,7 @@ module.exports= [
       price: 110000,
       location: "Montana",
       country: "United States",
+      category:"Farms",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -283,6 +304,7 @@ module.exports= [
       price: 250000,
       location: "Mykonos",
       country: "Greece",
+      category:"Castles",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -296,6 +318,7 @@ module.exports= [
       price: 750000,
       location: "Costa Rica",
       country: "Costa Rica",
+      category:"Beaches",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -309,6 +332,7 @@ module.exports= [
       price: 160000,
       location: "Charleston",
       country: "United States",
+      category:"Mountains",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -322,6 +346,7 @@ module.exports= [
       price: 2000000,
       location: "Tokyo",
       country: "Japan",
+      category:"Iconic Cities",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -335,6 +360,7 @@ module.exports= [
       price: 1200,
       location: "New Hampshire",
       country: "United States",
+      category:"Camping",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -348,6 +374,7 @@ module.exports= [
       price: 6000,
       location: "Maldives",
       country: "Maldives",
+      category:"Trending",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -361,6 +388,7 @@ module.exports= [
       price: 4000,
       location: "Aspen",
       country: "United States",
+      category:"Mountains",
       owner:'66bbd2076805a86042f0d113'
     },
     {
@@ -374,6 +402,7 @@ module.exports= [
       price: 1800,
       location: "Costa Rica",
       country: "Costa Rica",
+      category:"Beaches",
       owner:'66bbd2076805a86042f0d113'
     },
   ];

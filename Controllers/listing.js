@@ -11,8 +11,13 @@ module.exports.showlisting = async (req,res)=>{
 module.exports.createlisting =(req,res)=>{    
     res.render("create.ejs");
 }
+module.exports.filter = async(req,res)=>{
+    let data = await lstData.find({}).populate({path:"owner"});
+    let categor = req.params.category;
+    res.render("filter.ejs",{listdata:data,catg:categor});
+}
 module.exports.edit = async(req,res)=>{   
-    let {title,description,price,country,location} = req.body;
+    let {title,description,category,price,country,location} = req.body;
     const newplace = new lstData({
         title:title,
         description:description,
@@ -23,6 +28,7 @@ module.exports.edit = async(req,res)=>{
         price:price,
         location:location,
         country:country,
+        category:category
     });
     newplace.owner = req.user._id;
     await newplace.save();
@@ -42,13 +48,14 @@ module.exports.showedit = async(req,res)=>{
     }
     }
     module.exports.update = async (req, res) => {
-        let { title, description, price, country, location } = req.body;
+        let { title, description, category,price, country, location } = req.body;
         const updateFields = {
             title: title,
             description: description,
             price: price,
             location: location,
-            country: country
+            country: country,
+            categoru:category
         };
         
         if(req.file){

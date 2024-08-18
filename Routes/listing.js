@@ -44,6 +44,9 @@ const valid = (req,res,next)=>{
 //Show the listings...
 router.get("/listing",isLogged,wrapAsync(listingController.showlisting))
 
+//Filter ke sath Listing
+router.get("/listing/show/:category",wrapAsync(listingController.filter));
+
 // Show the form for add the listing...
 router.get("/addListingDetail",isLogged,wrapAsync(listingController.createlisting))
 
