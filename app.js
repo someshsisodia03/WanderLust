@@ -28,10 +28,11 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const user = require('./Models/user.js');
 app.set("view engine","ejs");
-const PORT = 3000;
-app.listen(PORT,()=>{
-    console.log("I m listening...")
-})
+const PORT = 3002;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
 app.use(session({
     secret: 'keyboard cat',
     resave: false,

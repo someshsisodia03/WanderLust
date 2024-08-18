@@ -46,7 +46,7 @@ module.exports.showedit = async(req,res)=>{
         req.flash("error","You are not authenticated user");
         res.redirect("/moreabout/"+id);
     }
-    }
+}
     module.exports.update = async (req, res) => {
         let { title, description, category,price, country, location } = req.body;
         const updateFields = {
