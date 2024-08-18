@@ -28,9 +28,11 @@
             <p class="card-text"><b>Price: </b><%=details.price%></p>
             <p class="card-text"><b>Location: </b><%=details.location%></p>
             <p class="card-text"><b>Country: </b><%=details.country%></p>
+            <%if(curruser&&curruser._id.equals(details.owner._id)){%>
                 <a href="/listing/edit/<%=details.id%>" class="btn btn-primary">Want to Update it</a>
                 <br><br>
                 <form method="post" action="/deleteDetail/<%=details.id%>?_method=DELETE"><button style="border-radius: 0.5rem;height: 2.3rem;border: none; background-color: rgba(86, 86, 220, 0.95);color: white;">Delete this post</button></form>
+            <%}%>
             <hr>
             <h5 class="text-center m-3"><b style="font-size: larger;">Leave a review</b></h5>
             <div class="forms">
@@ -71,7 +73,7 @@
                     <p class="starability-result card-text" data-rating="<%=x.rating%>" ></p>
                     <p class="card-text">Comment: <i><%=x.comment%></i></p>
                     <p class="card-text">Time: <%=x.CreatedAt%></p>
-                    <%if(curruser._id.equals(x.author._id)){%>
+                    <%if(curruser && curruser._id.equals(x.author._id)){%>
                     <form method="post" action="/delete/<%=details.id%>/review/<%=x.id%>" ><button class="review-delete" >Delete</button></form>
                     <%}%>
                 </div>
@@ -79,27 +81,24 @@
             </div>
             <%}%>
             </div>
-
         <%}%>
         <hr>
         <div id="map" style="height: 500px;width: 100%;"></div>
         <!-- Map-Section -->
-         
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
         <script>
             window.onload = function() {
                 function getLatLon(locationName, countryName, callback) {
-                    var geocoder = L.Control.Geocoder.nominatim();        
-                    var query = `${locationName}, ${countryName}`;        
+                    var geocoder = L.Control.Geocoder.nominatim();
+                    var query = `${locationName}, ${countryName}`;
                     geocoder.geocode(query, function(results) {
                         var latlng = results[0].center;
-                        callback(latlng.lat, latlng.lng);                
+                        callback(latlng.lat, latlng.lng);
                     });
-                }            
+                }
                 getLatLon('<%=details.location%>', '<%=details.country%>', function(lat, lon) {
-                    if (lat && lon) {
-                        var map = L.map('map').setView([lat, lon], 13);
+                        var map = L.map('map').setView([lat, lon], 10);
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         }).addTo(map);
@@ -107,12 +106,10 @@
                         L.marker([lat, lon]).addTo(map)
                             .bindPopup('You will be here!')
                             .openPopup();
-                    }
                 });
             };
-            </script> 
-            
+        </script>
     </div> 
-    </div>
+</div>
 </div>
 </body>

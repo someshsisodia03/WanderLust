@@ -42,7 +42,7 @@ const valid = (req,res,next)=>{
 }
 
 //Show the listings...
-router.get("/listing",wrapAsync(listingController.showlisting))
+router.get("/listing",isLogged,wrapAsync(listingController.showlisting))
 
 // Show the form for add the listing...
 router.get("/addListingDetail",isLogged,wrapAsync(listingController.createlisting))

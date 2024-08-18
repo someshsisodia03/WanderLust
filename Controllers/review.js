@@ -22,6 +22,7 @@ module.exports.destroy = async(req,res)=>{
     
 }
 module.exports.add =async (req,res)=>{
+    console.log(req.params);
     let id = req.params.id;
     let {comment,rating} = req.body;
     const review1 = new review({

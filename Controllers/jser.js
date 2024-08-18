@@ -1,5 +1,5 @@
 const passport = require("passport");
-
+const user = require("../Models/user")
 module.exports.signup=(req,res)=>{
     res.locals.msg = req.flash("error");
     res.render("signup.ejs");
